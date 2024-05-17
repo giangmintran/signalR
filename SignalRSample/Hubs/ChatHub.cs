@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using SignalRSample.Dtos;
 
 namespace SignalRSample.Hubs
 {
-    public class ChatHub : Hub<IHubClient>
+    public class ChatHub : Hub
     {
-        public async Task BroadcastMessage(MessageInstance msg)
+        public async Task BroadcastMessage(string user, string message)
         {
-            await Clients.All.BroadcastMessage(msg);
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
     }
 }

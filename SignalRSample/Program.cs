@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using SignalRSample.Hubs;
 
 internal class Program
@@ -13,15 +14,20 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddCors(o =>
-            o.AddPolicy(
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(
                 "CorsPolicy",
-                b =>
+                builder =>
                 {
-                    b.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                    builder
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .SetIsOriginAllowed((host) => true) // Allow any origin
+                        .AllowCredentials();
                 }
-            )
-        );
+            );
+        });
 
         builder.Services.AddSignalR();
         var app = builder.Build();
@@ -32,7 +38,7 @@ internal class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-
+        app.UseRouting();
         app.UseCors("CorsPolicy");
         app.UseHttpsRedirection();
 

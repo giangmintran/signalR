@@ -30,3 +30,4 @@ D:\Test\signalR\SignalRSample\obj\Debug\net8.0\refint\SignalRSample.dll
 D:\Test\signalR\SignalRSample\obj\Debug\net8.0\SignalRSample.pdb
 D:\Test\signalR\SignalRSample\obj\Debug\net8.0\SignalRSample.genruntimeconfig.cache
 D:\Test\signalR\SignalRSample\obj\Debug\net8.0\ref\SignalRSample.dll
+D:\Test\signalR\SignalRSample\obj\Debug\net8.0\SignalRSample.sourcelink.json
